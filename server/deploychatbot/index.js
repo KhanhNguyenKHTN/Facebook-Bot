@@ -49,9 +49,10 @@ function deployChatbot(appState, parent) {
 			if (group.memberManager.items.length == 0) {
 				group.downloadFromFacebook(api);
 			}
-			console.log("Khanh:", body);
+			// console.log("Khanh:", body);
 			// console.log("API:", mssg);
-			api.sendMessage("Khánh test!", threadID);
+			//api.sendMessage("Khánh test!", threadID);
+
 			if (body[0] == "/") { // check if command
 				const temp = body.split(" ")[0].split("/");
 				const commandName = temp[temp.length - 1]; // lay ten command
@@ -68,16 +69,17 @@ function deployChatbot(appState, parent) {
 				}
 				return;
 			} else { // not a command
-				group.messagesCount++;
-				group.memberManager.find(senderID, true, true).messagesCount++;
-				// group.uploadToDtb();
-				// group.memberManager.find(senderID, true, true).uploadToDtb();
-				if (group.gaming) {
-					group.game.update(body, api, parent, mssg, group, groupManager);
-				} else {
-					if (group.chat) // bot autoreply is on?
-						commandManager.find("autoreply").reply(body, api, parent, mssg);
-				}
+				// group.messagesCount++;
+				// group.memberManager.find(senderID, true, true).messagesCount++;
+				// // group.uploadToDtb();
+				// // group.memberManager.find(senderID, true, true).uploadToDtb();
+				// if (group.gaming) {
+				// 	group.game.update(body, api, parent, mssg, group, groupManager);
+				// } else {
+				// 	if (group.chat) // bot autoreply is on?
+				// 		commandManager.find("autoreply").reply(body, api, parent, mssg);
+				// }
+				commandManager.find("autoreply").reply(body, api, parent, mssg);
 			}
 		});
 	});
