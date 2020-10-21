@@ -50,6 +50,7 @@ function deployChatbot(appState, parent) {
 				group.downloadFromFacebook(api);
 			}
 			console.log("Khanh:", body);
+			console.log("API:", mssg);
 			if (body[0] == "/") { // check if command
 				const temp = body.split(" ")[0].split("/");
 				const commandName = temp[temp.length - 1]; // lay ten command
