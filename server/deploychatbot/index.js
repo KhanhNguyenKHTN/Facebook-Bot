@@ -69,17 +69,17 @@ function deployChatbot(appState, parent) {
 				}
 				return;
 			} else { // not a command
-				// group.messagesCount++;
-				// group.memberManager.find(senderID, true, true).messagesCount++;
-				// // group.uploadToDtb();
-				// // group.memberManager.find(senderID, true, true).uploadToDtb();
-				// if (group.gaming) {
-				// 	group.game.update(body, api, parent, mssg, group, groupManager);
-				// } else {
-				// 	if (group.chat) // bot autoreply is on?
-				// 		commandManager.find("autoreply").reply(body, api, parent, mssg);
-				// }
-				commandManager.find("autoreply").reply(body, api, parent, mssg);
+				group.messagesCount++;
+				group.memberManager.find(senderID, true, true).messagesCount++;
+				// group.uploadToDtb();
+				// group.memberManager.find(senderID, true, true).uploadToDtb();
+				if (group.gaming) {
+					group.game.update(body, api, parent, mssg, group, groupManager);
+				} else {
+					if (group.chat) // bot autoreply is on?
+						commandManager.find("autoreply").reply(body, api, parent, mssg);
+				}
+				// commandManager.find("autoreply").reply(body, api, parent, mssg);
 			}
 		});
 	});
